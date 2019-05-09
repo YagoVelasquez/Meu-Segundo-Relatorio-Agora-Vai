@@ -1,0 +1,62 @@
+---
+title: "index.Rmd"
+output:
+  html_document:
+    df_print: paged
+---
+
+Exercício 2
+
+Após instalar o Tidyverse, instalamos o pacote gapminder para acessar o dataset contido nele (com o mesmo nome)
+
+```{r,message=F}
+library(tidyverse)
+library(gapminder)
+```
+
+```{r}
+df <- gapminder
+```
+
+```{r}
+head(df, n=6L)
+```
+
+O Dataset apresenta uma lista de países, continentes, anos, e informações numéricas.
+
+```{r}
+nrow(df)
+```
+
+O dataset possui 1704 linhas.
+
+```{r}
+gapminder %>%
+  select(year) %>%
+  unique() %>%
+  nrow()
+```
+
+```{r}
+gapminder %>%  
+  group_by(year) %>% 
+  summarize( n=n() )
+```
+
+
+```{r}
+gapminder %>%  
+  filter(year=="1952") %>%
+  ggplot( aes(x= gdpPercap, y=lifeExp)) +
+    geom_point()
+```
+
+
+```{r}
+gapminder %>%
+  filter()
+```
+
+
+
+
